@@ -1,0 +1,5 @@
+#!/bin/sh
+
+git submodule update --init --recursive
+
+docker compose -f elog-plus-backend/docker-compose.yml -f elog-plus-backend/docker-compose-app.yml -f elog-plus-frontend/docker-compose.yml up
