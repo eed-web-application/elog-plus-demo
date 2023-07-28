@@ -1,0 +1,6 @@
+[submodule "elog-plus-frontend"]
+	path = elog-plus-frontend
+	url = git@github.com:eed-web-application/elog-plus-frontend.git
+[submodule "elog-plus-backend"]
+	path = elog-plus-backend
+	url = git@github.com:eed-web-application/elog-plus.git
