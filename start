@@ -2,7 +2,7 @@
 
 git submodule update --init --recursive
 
-docker compose -f docker-compose.yml -f elog-plus-backend/docker-compose.yml up -d
+docker compose -f docker-compose.yml -f elog-plus-backend/docker-compose.yml up --build -d
 
 echo "Give some second for startup all services"
 sleep 10
