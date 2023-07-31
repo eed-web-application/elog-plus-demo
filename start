@@ -2,4 +2,8 @@
 
 git submodule update --init --recursive
 
-docker compose -f elog-plus-backend/docker-compose.yml -f elog-plus-backend/docker-compose-app.yml -f elog-plus-frontend/docker-compose.yml up
+docker compose -f docker-compose.yml -f elog-plus-backend/docker-compose.yml up -d
+
+echo "Give some second for startup all services"
+sleep 10
+echo 'Open browser on http://localhost'
