@@ -9,21 +9,16 @@ services:
         depends_on:
           - backend
           - frontend
-        networks:
-            - back-tier
 
     frontend:
         build:
             context: elog-plus-frontend
-        networks:
-            - back-tier
+
     backend:
         build:
             context: elog-plus-backend
         ports:
             - 8080:8080
-        networks:
-            - back-tier
         environment:
             - ELOG_PLUS_MINIO_URL=http://minio:9000
             - ELOG_PLUS_MONGODB_URI=mongodb://elogs:elogs@mongodb-primary:27017/elogs?authSource=elogs
