@@ -14,7 +14,7 @@ services:
         build:
             context: elog-plus-frontend
             args:
-                - API_ENDPOINT=/api/elogs/v1
+                - API_ENDPOINT=/api/elogs
 
     backend:
         build:
