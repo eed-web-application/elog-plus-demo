@@ -1,9 +1,34 @@
 #!/bin/sh
+URL_BACKEND="http://localhost:8080/actuator/info"
+URL_FRONTEND="http://localhost"
+
+check_endpoint() {
+  URL="$2"
+  SERVICE="$1"
+
+  while true; do
+    curl --connect-timeout 5 --head "$URL" > /dev/null 2>&1
+
+    if [ $? -ne 0 ]; then
+        echo "The $SERVICE is not available."
+    else
+        echo "The $SERVICE is available."
+        break
+    fi
+
+    sleep 1
+  done
+}
+
 
 git submodule update --init --recursive
 
-docker compose -f docker-compose.yml -f elog-plus-backend/docker-compose.yml up --force-recreate -d
+docker compose -f docker-compose.yml -f elog-plus-backend/docker-compose.yml up backend -d
 
-echo "Give some second for startup all services"
-sleep 10
-echo 'Open browser on http://localhost'
+echo "Check for service are up"
+check_endpoint "Backend", "$URL_BACKEND"
+
+docker compose -f docker-compose.yml -f elog-plus-backend/docker-compose.yml up ingress -d
+check_endpoint "Frontend", "$URL_FRONTEND"
+
+echo "Elog demo is up reacheable on http://localhost"
