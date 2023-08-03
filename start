@@ -23,6 +23,11 @@ check_endpoint() {
 
 git submodule update --init --recursive
 
+echo "start backend"
+docker compose -f docker-compose.yml -f elog-plus-backend/docker-compose.yml up mongodb-primary minio kafka zookeeper -d
+
+sleep 5
+
 docker compose -f docker-compose.yml -f elog-plus-backend/docker-compose.yml up backend -d
 
 echo "Check for service are up"
