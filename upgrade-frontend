@@ -2,5 +2,5 @@
 CMD="docker compose -f docker-compose.yml -f elog-plus-backend/docker-compose.yml"
 
 $CMD stop frontend 
-$CMD build frontend
+$CMD build --no-cache frontend
 $CMD up frontend -d
