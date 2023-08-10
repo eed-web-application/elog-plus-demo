@@ -1,1 +1,1 @@
-docker compose -f docker-compose.yml -f elog-plus-backend/docker-compose.yml down -v
+docker compose -f docker-compose.yml -f elog-plus-backend/docker-compose.yml down
